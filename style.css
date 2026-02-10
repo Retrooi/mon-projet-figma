@@ -1,0 +1,480 @@
+/* --- Reset et Variables --- */
+:root {
+    --primary-red: #E60012;
+    --dark-stripe-1: #2b2b2b;
+    --dark-stripe-2: #383838;
+    --text-white: #ffffff;
+    --font-stack: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--dark-stripe-1);
+    background-image: 
+        radial-gradient(circle at center, rgba(0,0,0,0) 20%, rgba(0,0,0,0.7) 100%),
+        repeating-linear-gradient(
+            90deg,
+            var(--dark-stripe-1),
+            var(--dark-stripe-1) 60px,
+            var(--dark-stripe-2) 60px,
+            var(--dark-stripe-2) 120px
+        );
+    color: var(--text-white);
+    font-family: var(--font-stack);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* --- Header --- */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+.main-logo {
+    max-width: 180px;
+    height: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+/* --- Menu Option (Hamburger) --- */
+.option {
+    position: absolute;
+    right: 25px; /* Positionné à DROITE */
+    top: 50%; /* Centré verticalement */
+    transform: translateY(-50%);
+    width: 30px;
+    height: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 10; /* S'assure qu'il est au-dessus du reste */
+}
+
+.option span {
+    display: block;
+    height: 4px;
+    width: 100%;
+    background-color: #888;
+    border-radius: 4px;
+}
+
+/* --- Main Layout --- */
+.game-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* --- Showcase des Cartes --- */
+.cards-showcase {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.card {
+    background-color: var(--primary-red);
+    padding: 25px;
+    border-radius: 20px;
+    flex-basis: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(230, 0, 18, 0.5);
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.main-card {
+    z-index: 2;
+    transform: scale(1.15);
+}
+
+.side-card {
+    z-index: 1;
+    transform: scale(0.95) translateZ(-20px);
+    opacity: 0.9;
+}
+
+.side-card:hover {
+    transform: scale(1.05) translateZ(0);
+    opacity: 1;
+    z-index: 3;
+}
+
+.card h2 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.shoe-model {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.card-image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.card img {
+    max-width: 80%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+}
+
+.main-image img {
+    max-width: 100%;
+}
+
+/* --- Règles du jeu --- */
+.rules-section {
+    margin-bottom: 40px;
+}
+
+.rules-section h3 {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.rules-section ul {
+    list-style: none;
+    display: inline-block;
+    text-align: left;
+}
+
+.rules-section li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    position: relative;
+    padding-left: 25px;
+}
+
+.rules-section li::before {
+    content: '•';
+    color: var(--primary-red);
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: -2px;
+}
+
+/* --- Boutons (CTA) --- */
+.cta-container {
+    margin-bottom: 50px;
+}
+
+.play-button {
+    background-color: black;
+    color: var(--text-white);
+    border: none;
+    padding: 18px 50px;
+    font-size: 1.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    letter-spacing: 1px;
+}
+
+.play-button:hover {
+    background-color: var(--primary-red);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 25px rgba(230, 0, 18, 0.6);
+}
+
+/* --- PAGE INSCRIPTION --- */
+.form-page {
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 40px;
+    margin: 0 20px;
+    background: rgba(43, 43, 43, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+.form-container h1 {
+    color: var(--primary-red);
+    text-transform: uppercase;
+    font-weight: 900;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.input-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding-left: 5px;
+    color: #ddd;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 2px solid #555;
+    border-radius: 10px;
+    color: white;
+    font-size: 1rem;
+    font-family: var(--font-stack);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: var(--primary-red);
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 15px rgba(230, 0, 18, 0.3);
+}
+
+.form-btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* --- RESPONSIVE DESIGN (Mobile) --- */
+@media (max-width: 900px) {
+
+    /* CORRECTION 1 : On force les cartes à s'empiler */
+    .cards-showcase {
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    /* CORRECTION 2 : Le menu reste à droite */
+    .option {
+        right: 20px; 
+        left: auto;  
+        top: 30px; /* Un peu plus haut sur mobile pour être aligné */
+        transform: none; /* Enlève le centrage vertical automatique */
+    }
+
+    .main-card {
+        transform: scale(1.1);
+        order: -1; /* Met la chaussure en premier */
+    }
+
+    .side-card {
+        transform: scale(1);
+        flex-basis: auto;
+        width: 90%;
+        max-width: 350px;
+    }
+
+    /* Suppression de la règle contradictoire .option { left: 20px } qui était ici */
+    
+    .form-container {
+        padding: 25px;
+        width: 90%;
+    }
+    
+    .form-container h1 {
+        font-size: 1.5rem;
+    }
+}
+
+#trigger-spin {
+    display: none;
+}
+
+.roulette-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* 2. Titre Néon */
+.glow-text {
+    color: var(--primary-red);
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(230, 0, 18, 0.8);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { text-shadow: 0 0 10px rgba(230, 0, 18, 0.8); transform: scale(1); }
+    50% { text-shadow: 0 0 30px rgba(230, 0, 18, 1); transform: scale(1.02); }
+}
+
+/* 3. Conteneur de la roue */
+.wheel-section {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    margin-bottom: 40px;
+    /* Cercle lumineux derrière */
+    background: radial-gradient(circle, rgba(255,0,0,0.2) 0%, rgba(0,0,0,0) 70%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* La flèche (Indicateur) */
+.marker {
+    position: absolute;
+    top: -15px;
+    z-index: 10;
+    width: 0; 
+    height: 0; 
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 30px solid white;
+    filter: drop-shadow(0 4px 4px rgba(0,0,0,0.8));
+}
+
+.wheel-wrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    border: 5px solid rgba(255,255,255,0.1);
+}
+
+.the-wheel {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: rotate(0deg); /* Position de départ */
+}
+
+/* 4. LE MÉCANISME D'ANIMATION (Quand la case est cochée) */
+#trigger-spin:checked ~ .game-container .wheel-wrapper .the-wheel {
+    /* Calcul de la rotation :
+       5 tours complets (1800deg) + 180deg pour amener la chaussure (qui est en bas) vers le haut.
+       Total = 1980deg.
+    */
+    animation: spinWheel 4s cubic-bezier(0.2, 0, 0.2, 1) forwards;
+}
+
+@keyframes spinWheel {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(1980deg); } /* S'arrête sur la chaussure */
+}
+
+/* 5. Gestion du bouton */
+.spin-btn {
+    cursor: pointer;
+    display: inline-block;
+    user-select: none;
+}
+
+/* Une fois cliqué, le bouton disparaît ou se désactive visuellement */
+#trigger-spin:checked ~ .game-container .spin-btn {
+    opacity: 0.5;
+    pointer-events: none; /* Empêche de recliquer */
+    transform: scale(0.95);
+    background-color: #333;
+    content: "Bonne chance...";
+}
+
+/* 6. Message de Victoire (Caché au début) */
+.win-message {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(20px);
+    text-align: center;
+    background: rgba(0,0,0,0.8);
+    border: 1px solid var(--primary-red);
+    padding: 0 20px;
+    border-radius: 15px;
+    transition: all 0.5s ease;
+}
+
+.win-message h2 {
+    color: var(--primary-red);
+    margin-bottom: 10px;
+}
+
+.claim-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: white;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+
+#trigger-spin:checked ~ .game-container .win-message {
+    height: auto;
+    opacity: 1;
+    transform: translateY(0);
+    padding: 20px;
+    margin-top: 20px;
+    
+    transition-delay: 4s; 
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .wheel-section {
+        width: 280px;
+        height: 280px;
+    }
+    .glow-text {
+        font-size: 1.8rem;
+    }
+}
+
