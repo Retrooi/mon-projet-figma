@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Roue Tourne & Gagne</title>
+    <style>
+        /* 1. Mise en page du fond */
+        body {
+            background: repeating-linear-gradient(90deg, #222, #222 40px, #333 40px, #333 80px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #ff0000;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        /* 2. Conteneur de la roue */
+        .wheel-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            border: 5px solid #ff0000;
+            overflow: hidden; /* Coupe tout ce qui dépasse du cercle */
+            transition: transform 4s cubic-bezier(0.15, 0, 0.15, 1); /* Animation fluide */
+        }
+
+        /* 3. Création des 3 sections */
+        .section {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-origin: 50% 100%; /* Pivote depuis le centre */
+            top: -50%; /* Ajustement pour centrer le pivot */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #ff0000;
+            border: 1px solid #000;
+        }
+
+        /* Positionnement angulaire des segments (360° / 3 = 120°) */
+        .s1 { transform: rotate(0deg) skewY(30deg); }
+        .s2 { transform: rotate(120deg) skewY(30deg); background-color: #f00; }
+        .s3 { transform: rotate(240deg) skewY(30deg); }
+
+        /* Contenu à l'intérieur des segments (on annule le skew pour le texte) */
+        .content {
+            transform: skewY(-30deg) translateY(120px);
+            text-align: center;
+            color: black;
+            font-weight: bold;
+            width: 150px;
+        }
+
+        .content img { width: 80px; }
+
+        /* 4. Bouton Participer */
+        .btn-participer {
+            margin-top: 30px;
+            padding: 15px 50px;
+            background-color: black;
+            color: white;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>TOURNE & GAGNE</h1>
+
+    <div class="wheel-container" id="wheel">
+        <div class="section s1">
+            <div class="content">
+                <img src="https://logodownload.org/wp-content/uploads/2017/04/foot-locker-logo-1.png" alt="Logo" style="background:black; padding:5px; border-radius:20px;">
+                <p>Réduction foot loker<br>- 10%</p>
+            </div>
+        </div>
+        <div class="section s2">
+            <div class="content">
+                <img src="https://logodownload.org/wp-content/uploads/2017/04/foot-locker-logo-1.png" alt="Logo" style="background:black; padding:5px; border-radius:20px;">
+                <p>Réduction foot loker<br>- 20%</p>
+            </div>
+        </div>
+        <div class="section s3">
+            <div class="content">
+                <img src="https://images.clothes.com/images/sneakers.png" alt="Sneaker" style="width:120px;">
+            </div>
+        </div>
+    </div>
+
+    <button class="btn-participer" onclick="spinWheel()">Participer</button>
+
+    <script>
+        let currentRotation = 0;
+
+        function spinWheel() {
+            // On ajoute au moins 5 tours complets (1800deg) + une valeur aléatoire
+            const extraRotation = Math.floor(Math.random() * 360) + 1800;
+            currentRotation += extraRotation;
+            
+            // On applique la rotation à la roue
+            document.getElementById('wheel').style.transform = `rotate(${currentRotation}deg)`;
+        }
+    </script>
+
+</body>
+</html>
