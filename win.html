@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* 1. Fond rayé identique à la roue */
+        body {
+            background: repeating-linear-gradient(90deg, #2b2b2b, #2b2b2b 40px, #333 40px, #333 80px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        /* 2. Titre en rouge */
+        .felicitations {
+            color: #ff0000;
+            font-size: 3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        /* 3. Conteneur central pour l'empilement */
+        .reward-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* L'étoile jaune en arrière-plan */
+        .star {
+            position: absolute;
+            width: 350px;
+            z-index: 1;
+            /* Petit effet d'éclat */
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
+        }
+
+        /* Le tas de cadeaux */
+        .presents {
+            position: absolute;
+            width: 320px;
+            bottom: 40px;
+            z-index: 2;
+        }
+
+        /* La chaussure (le clou du spectacle) */
+        .shoe {
+            position: absolute;
+            width: 280px;
+            z-index: 3;
+            transform: translateY(-20px);
+            filter: drop-shadow(5px 5px 15px rgba(0,0,0,0.5));
+        }
+
+        /* 4. Texte de gain en bas */
+        .win-text {
+            color: white;
+            font-size: 2.5rem;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="felicitations">FÉLICITATIONS !</div>
+
+    <div class="reward-container">
+        <img src="https://img.icons8.com/emoji/480/star-emoji.png" class="star" alt="Étoile">
+        
+        <img src="https://pngimg.com/d/gift_PNG5954.png" class="presents" alt="Cadeaux">
+        
+        <img src="https://pngimg.com/d/running_shoes_PNG5823.png" class="shoe" alt="New Balance">
+    </div>
+
+    <div class="win-text">vous avez gagné</div>
+
+</body>
+</html>

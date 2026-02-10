@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background: repeating-linear-gradient(90deg, #2b2b2b, #2b2b2b 50px, #333 50px, #333 100px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+            font-family: 'Arial Black', sans-serif;
+        }
+
+        h1 { color: #ff0000; font-size: 3.5rem; margin-bottom: 30px; letter-spacing: 2px; }
+
+        /* Conteneur principal qui tourne */
+        .wheel-wrapper {
+            position: relative;
+            width: 450px;
+            height: 450px;
+        }
+
+        .wheel {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 4px solid #000;
+            /* Création des 3 sections rouges avec séparations noires */
+            background: conic-gradient(
+                #ff0000 0deg 120deg, 
+                #000 120deg 121deg, 
+                #ff0000 121deg 240deg, 
+                #000 240deg 241deg, 
+                #ff0000 241deg 360deg
+            );
+            position: relative;
+            transition: transform 4s cubic-bezier(0.15, 0, 0.15, 1);
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        /* Positionnement des lots */
+        .item {
+            position: absolute;
+            width: 160px;
+            left: 50%;
+            top: 50%;
+            transform-origin: 0% 0%; /* On fait pivoter depuis le centre exact */
+            text-align: center;
+            color: black;
+            font-size: 0.9rem;
+        }
+
+        /* Chaque item est pivoté pour être au centre de sa part */
+        .item-1 { transform: rotate(-60deg) translate(40px, -80px); }
+        .item-2 { transform: rotate(60deg) translate(40px, -80px); }
+        .item-3 { transform: rotate(180deg) translate(40px, -80px); }
+
+        .logo-box {
+            background: #1a1a1a;
+            padding: 8px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        .logo-box img { width: 70px; display: block; filter: invert(1); } /* Logo blanc si besoin */
+        
+        .shoe { width: 130px; margin-top: 20px; }
+
+        .btn-participer {
+            margin-top: 40px;
+            padding: 15px 60px;
+            background-color: black;
+            color: white;
+            border-radius: 50px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            border: none;
+            transition: 0.2s;
+        }
+
+        .btn-participer:active { transform: scale(0.95); }
+    </style>
+</head>
+<body>
+
+    <h1>TOURNE & GAGNE</h1>
+
+    <div class="wheel-wrapper">
+        <div class="wheel" id="wheel">
+            <div class="item item-1">
+                <div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/94/Foot_Locker_logo.svg/1200px-Foot_Locker_logo.svg.png"></div>
+                <p>Réduction foot loker<br><b>- 10%</b></p>
+            </div>
+            <div class="item item-2">
+                <div class="logo-box"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/94/Foot_Locker_logo.svg/1200px-Foot_Locker_logo.svg.png"></div>
+                <p>Réduction foot loker<br><b>- 20%</b></p>
+            </div>
+            <div class="item item-3">
+                <img src="https://pngimg.com/d/running_shoes_PNG5823.png" class="shoe">
+            </div>
+        </div>
+    </div>
+
+    <button class="btn-participer" onclick="spin()">Participer</button>
+
+    <script>
+        let angle = 0;
+        function spin() {
+            // Ajoute entre 5 et 10 tours + un angle aléatoire
+            const randomExtra = Math.floor(Math.random() * 360);
+            angle += 1800 + randomExtra; 
+            document.getElementById('wheel').style.transform = `rotate(${angle}deg)`;
+        }
+    </script>
+
+</body>
+</html>
