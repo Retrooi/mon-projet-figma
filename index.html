@@ -3,47 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foot Locker - Jeu Concours</title>
+    <title>Foot Locker - Accueil</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <div class="option">
-            <span></span>
-            <span></span>
-            <span></span>
+    <input type="checkbox" id="menu-toggle">
+    <div class="sidebar">
+        <label for="menu-toggle" class="close-btn">&times;</label>
+        <div class="menu-content">
+            <a href="index.html">ACCUEIL</a>
+            <a href="#">MON PROFIL</a>
+            <a href="#">RÈGLEMENT</a>
+            <a href="https://www.footlocker.fr" target="_blank">SITE OFFICIEL</a>
         </div>
-        <img src="images/bafec5b9-a5f7-4f1d-88d5-dd2fdf3ddb58.png" alt="Logo Foot Locker Referee" class="main-logo">
+    </div>
+
+    <header>
+        <label for="menu-toggle" class="option">
+            <span></span><span></span><span></span>
+        </label>
+        <img src="images/bafec5b9-a5f7-4f1d-88d5-dd2fdf3ddb58.png" alt="Logo Foot Locker" class="main-logo">
     </header>
 
     <main class="game-container">
         
         <section class="cards-showcase">
-            
             <div class="card side-card">
-                <h2>Réduction Foot Locker<br>- 10%</h2>
-                <div class="card-image-container">
-                    <img src="images/73139685-7a7f-4439-a7ee-8affa6688c9d.png" alt="Carte cadeau Foot Locker">
-                </div>
+                <h2>Réduction<br>- 10%</h2>
+                <img src="images/73139685-7a7f-4439-a7ee-8affa6688c9d.png" alt="Carte cadeau">
             </div>
 
             <div class="card main-card">
-                <h2>Carte Cadeau Foot Locker</h2>
-                <p class="shoe-model">New Balance 1906R</p>
-                <div class="card-image-container main-image">
-                    <img src="images/2e144e1c-e14d-497c-96c0-714a6d28f0a0.png" alt="Chaussure New Balance Noire">
+                <h2>Carte Cadeau</h2>
+                <p>New Balance 1906R</p>
+                <div class="main-image">
+                    <img src="images/2e144e1c-e14d-497c-96c0-714a6d28f0a0.png" alt="Chaussure New Balance">
                 </div>
             </div>
 
             <div class="card side-card">
-                <h2>Réduction Foot Locker<br>- 20%</h2>
-                <div class="card-image-container">
-                    <img src="images/73139685-7a7f-4439-a7ee-8affa6688c9d.png" alt="Carte cadeau Foot Locker">
-                </div>
+                <h2>Réduction<br>- 20%</h2>
+                <img src="images/73139685-7a7f-4439-a7ee-8affa6688c9d.png" alt="Carte cadeau">
             </div>
-
         </section>
 
         <section class="rules-section">
@@ -56,9 +59,7 @@
         </section>
 
         <div class="cta-container">
-            <a href="inscription.html" style="text-decoration: none;">
-                <button class="play-button">Participer</button>
-            </a>
+            <a href="inscription.html" class="play-button">Participer</a>
         </div>
 
     </main>

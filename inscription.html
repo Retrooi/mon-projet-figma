@@ -3,55 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription - Foot Locker</title>
+    <title>Inscription</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <header>
-        <div class="option">
-            <span></span>
-            <span></span>
-            <span></span>
+    <input type="checkbox" id="menu-toggle">
+    <div class="sidebar">
+        <label for="menu-toggle" class="close-btn">&times;</label>
+        <div class="menu-content">
+            <a href="index.html">ACCUEIL</a>
+            <a href="#">RÈGLEMENT</a>
         </div>
-        <a href="page d'acceuil.html">
-            <img src="images/bafec5b9-a5f7-4f1d-88d5-dd2fdf3ddb58.png" alt="Logo Foot Locker" class="main-logo">
-        </a>
+    </div>
+    <header>
+        <label for="menu-toggle" class="option"><span></span><span></span><span></span></label>
+        <a href="index.html"><img src="images/bafec5b9-a5f7-4f1d-88d5-dd2fdf3ddb58.png" alt="Logo" class="main-logo"></a>
     </header>
-
     <main class="form-page">
-        
         <div class="form-container">
             <h1>Inscription</h1>
-            
-            <form action="#" method="POST">
-                
-                <div class="input-group">
-                    <label for="nom">Nom et prénom</label>
-                    <input type="text" id="nom" name="nom" required>
+            <form action="#">
+                <div class="input-group"><label>Nom et prénom</label><input type="text" required></div>
+                <div class="input-group"><label>Email</label><input type="email" required></div>
+                <div class="input-group"><label>Numéro</label><input type="tel" required></div>
+                <div class="cta-container">
+                    <a href="roulette.html" class="play-button form-btn" style="text-align:center; display:block;">Valider</a>
                 </div>
-
-                <div class="input-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-
-                <div class="input-group">
-                    <label for="telephone">Numéro</label>
-                    <input type="tel" id="telephone" name="telephone" required>
-                </div>
-
-                <<div class="cta-container">
-    <a href="roulette.html" style="text-decoration: none;">
-        <button type="button" class="play-button form-btn">Valider</button>
-    </a>
-</div>
-
             </form>
         </div>
-
     </main>
-
 </body>
 </html>

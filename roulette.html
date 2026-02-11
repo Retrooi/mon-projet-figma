@@ -9,15 +9,12 @@
 </head>
 <body>
 
-    <input type="checkbox" id="trigger-spin">
+    <input type="radio" name="rng" id="result-chaussure">
+    <input type="radio" name="rng" id="result-10">
+    <input type="radio" name="rng" id="result-20">
 
     <header>
-        <div class="option">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <img src="image_f432df.png" alt="Logo Foot Locker" class="main-logo">
+        <img src="images/bafec5b9-a5f7-4f1d-88d5-dd2fdf3ddb58.png" alt="Logo" class="main-logo">
     </header>
 
     <main class="game-container roulette-layout">
@@ -26,20 +23,23 @@
         
         <div class="wheel-section">
             <div class="marker"></div>
-            
             <div class="wheel-wrapper">
-                <img src="Component 10.png" alt="Roue Foot Locker" class="the-wheel">
+                <img src="images/Component 10.png" alt="Roue Foot Locker" class="the-wheel">
             </div>
         </div>
 
-        <div class="cta-container">
-            <label for="trigger-spin" class="play-button spin-btn">LANCER LA ROUE</label>
-        </div>
+        <div class="shuffle-wrapper">
+            
+            <div class="play-button spin-btn-visual">LANCER LA ROUE</div>
 
-        <div class="win-message">
-            <h2>FÉLICITATIONS !</h2>
-            <p>Tu as gagné la paire<br>New Balance 1906R !</p>
-            <a href="#" class="claim-btn">RÉCLAMER MON LOT</a>
+            <label for="result-chaussure" class="trigger-btn label-1"></label>
+            <label for="result-10" class="trigger-btn label-2"></label>
+            <label for="result-20" class="trigger-btn label-3"></label>
+
+            <a href="recompense.html#chaussure" class="play-button final-btn btn-chaussure">VOIR MON LOT</a>
+            <a href="recompense.html#gagne10" class="play-button final-btn btn-10">VOIR MON LOT</a>
+            <a href="recompense.html#gagne20" class="play-button final-btn btn-20">VOIR MON LOT</a>
+
         </div>
 
     </main>

@@ -1,8 +1,10 @@
-/* --- Reset et Variables --- */
+/* ==========================================================================
+   1. RESET ET VARIABLES GLOBALES
+   ========================================================================== */
 :root {
-    --primary-red: #E60012;
-    --dark-stripe-1: #2b2b2b;
-    --dark-stripe-2: #383838;
+    --primary-red: #E60012;       /* Rouge Foot Locker */
+    --dark-stripe-1: #2b2b2b;     /* Rayure foncée */
+    --dark-stripe-2: #383838;     /* Rayure claire */
     --text-white: #ffffff;
     --font-stack: 'Montserrat', sans-serif;
 }
@@ -15,6 +17,7 @@
 
 body {
     background-color: var(--dark-stripe-1);
+    /* Fond rayé style "Maillot" */
     background-image: 
         radial-gradient(circle at center, rgba(0,0,0,0) 20%, rgba(0,0,0,0.7) 100%),
         repeating-linear-gradient(
@@ -30,26 +33,38 @@ body {
     overflow-x: hidden;
 }
 
-/* --- Header --- */
+/* ==========================================================================
+   2. HEADER ET LOGO
+   ========================================================================== */
 header {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
     position: relative;
+    height: 100px;
+    z-index: 10;
 }
 
 .main-logo {
     max-width: 180px;
     height: auto;
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+    transition: transform 0.3s ease;
 }
+.main-logo:hover { transform: scale(1.05); }
 
-/* --- Menu Option (Hamburger) --- */
+/* ==========================================================================
+   3. MENU LATÉRAL (CHECKBOX HACK)
+   ========================================================================== */
+/* On cache la case technique */
+#menu-toggle { display: none; }
+
+/* Le bouton Burger (Label) */
 .option {
     position: absolute;
-    right: 25px; /* Positionné à DROITE */
-    top: 50%; /* Centré verticalement */
+    right: 25px;
+    top: 50%;
     transform: translateY(-50%);
     width: 30px;
     height: 25px;
@@ -57,7 +72,7 @@ header {
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
-    z-index: 10; /* S'assure qu'il est au-dessus du reste */
+    z-index: 200;
 }
 
 .option span {
@@ -66,134 +81,61 @@ header {
     width: 100%;
     background-color: #888;
     border-radius: 4px;
+    transition: 0.3s;
 }
 
-/* --- Main Layout --- */
-.game-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-}
-
-/* --- Showcase des Cartes --- */
-.cards-showcase {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    margin-top: 40px;
-    margin-bottom: 50px;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-}
-
-.card {
-    background-color: var(--primary-red);
-    padding: 25px;
-    border-radius: 20px;
-    flex-basis: 320px;
+/* Le Panneau Latéral */
+.sidebar {
+    height: 100%;
+    width: 350px;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: -350px; /* Caché à droite */
+    background-color: rgba(15, 15, 15, 0.98);
+    transition: right 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+    box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+    padding-top: 80px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 10px 30px rgba(230, 0, 18, 0.5);
-    transition: all 0.4s ease;
-    position: relative;
 }
 
-.main-card {
-    z-index: 2;
-    transform: scale(1.15);
-}
+/* Ouverture */
+#menu-toggle:checked ~ .sidebar { right: 0; }
 
-.side-card {
-    z-index: 1;
-    transform: scale(0.95) translateZ(-20px);
-    opacity: 0.9;
-}
-
-.side-card:hover {
-    transform: scale(1.05) translateZ(0);
-    opacity: 1;
-    z-index: 3;
-}
-
-.card h2 {
+/* Liens */
+.sidebar a {
+    padding: 20px 30px;
+    text-decoration: none;
     font-size: 1.2rem;
-    text-transform: uppercase;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
     font-weight: 900;
-    margin-bottom: 15px;
-    line-height: 1.2;
-}
-
-.shoe-model {
-    font-weight: 700;
-    font-size: 1rem;
-    margin-bottom: 10px;
-}
-
-.card-image-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-}
-
-.card img {
-    max-width: 80%;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
-}
-
-.main-image img {
-    max-width: 100%;
-}
-
-/* --- Règles du jeu --- */
-.rules-section {
-    margin-bottom: 40px;
-}
-
-.rules-section h3 {
-    font-size: 1.3rem;
     text-transform: uppercase;
-    margin-bottom: 20px;
-    font-weight: 700;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-.rules-section ul {
-    list-style: none;
-    display: inline-block;
-    text-align: left;
-}
-
-.rules-section li {
-    margin-bottom: 10px;
-    font-size: 1.1rem;
-    position: relative;
-    padding-left: 25px;
-}
-
-.rules-section li::before {
-    content: '•';
+.sidebar a:hover {
     color: var(--primary-red);
-    font-size: 1.5rem;
-    position: absolute;
-    left: 0;
-    top: -2px;
+    padding-left: 40px;
+    background: rgba(255,255,255,0.05);
 }
 
-/* --- Boutons (CTA) --- */
-.cta-container {
-    margin-bottom: 50px;
+.close-btn {
+    position: absolute; top: 20px; left: 25px;
+    font-size: 40px; color: white; cursor: pointer; line-height: 1;
 }
+.close-btn:hover { color: var(--primary-red); }
+
+/* ==========================================================================
+   4. BOUTONS GÉNÉRAUX
+   ========================================================================== */
+.cta-container { margin: 30px 0; display: flex; justify-content: center; }
 
 .play-button {
     background-color: black;
-    color: var(--text-white);
+    color: white;
     border: none;
     padding: 18px 50px;
     font-size: 1.2rem;
@@ -201,280 +143,269 @@ header {
     text-transform: uppercase;
     border-radius: 50px;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: 0.3s;
     box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-    letter-spacing: 1px;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
 }
 
 .play-button:hover {
     background-color: var(--primary-red);
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 15px 25px rgba(230, 0, 18, 0.6);
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(230, 0, 18, 0.6);
 }
 
-/* --- PAGE INSCRIPTION --- */
+/* ==========================================================================
+   5. PAGE ACCUEIL (CARTES)
+   ========================================================================== */
+.game-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.cards-showcase {
+    display: flex; justify-content: center; align-items: center; gap: 30px;
+    margin-top: 40px; margin-bottom: 50px;
+    transform-style: preserve-3d; perspective: 1000px;
+}
+
+.card {
+    background-color: var(--primary-red); padding: 25px; border-radius: 20px;
+    flex-basis: 320px; display: flex; flex-direction: column; align-items: center;
+    justify-content: space-between; box-shadow: 0 10px 30px rgba(230, 0, 18, 0.5);
+    transition: all 0.4s ease; min-height: 300px;
+}
+
+.main-card { transform: scale(1.15); z-index: 2; }
+.side-card { transform: scale(0.95); opacity: 0.9; z-index: 1; }
+.side-card:hover { transform: scale(1.05); opacity: 1; z-index: 3; cursor: pointer; }
+
+.card h2 { font-size: 1.2rem; text-transform: uppercase; font-weight: 900; margin-bottom: 15px; color: white;}
+.card img { max-width: 80%; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3)); transition: transform 0.3s; }
+.card:hover img { transform: scale(1.1) rotate(-5deg); }
+.main-image img { max-width: 100%; }
+
+/* ==========================================================================
+   SECTION RÈGLES (CORRECTION : Enlève les points à gauche)
+   ========================================================================== */
+.rules-section { 
+    margin-bottom: 40px; 
+    text-align: center;
+}
+
+.rules-section h3 { 
+    text-transform: uppercase; 
+    margin-bottom: 15px; 
+    color: #ddd; 
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+.rules-section ul { 
+    list-style: none;
+    padding: 0;
+    display: inline-block; /* Centre le bloc tout en alignant le texte à gauche */
+    text-align: left; 
+}
+
+.rules-section li { 
+    font-size: 1.1rem; 
+    margin-bottom: 8px;
+    color: white;
+}
+
+.rules-section li::before { 
+    content: '•'; 
+    color: var(--primary-red); 
+    font-size: 2rem; 
+    margin-right: 10px; 
+    vertical-align: middle;
+    line-height: 1;
+}
+
+/* ==========================================================================
+   6. PAGE INSCRIPTION (FORMULAIRE)
+   ========================================================================== */
 .form-page {
-    width: 100%;
-    min-height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding-top: 40px;
-    padding-bottom: 50px;
+    width: 100%; min-height: 80vh;
+    display: flex; justify-content: center; padding-top: 40px;
 }
 
 .form-container {
-    width: 100%;
-    max-width: 500px;
-    padding: 40px;
-    margin: 0 20px;
-    background: rgba(43, 43, 43, 0.8);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    width: 100%; max-width: 500px; padding: 40px; margin: 0 20px;
+    background: rgba(43, 43, 43, 0.8); backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; text-align: center;
 }
 
-.form-container h1 {
-    color: var(--primary-red);
-    text-transform: uppercase;
-    font-weight: 900;
-    margin-bottom: 30px;
-    font-size: 2rem;
-    letter-spacing: 1px;
-    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
-}
+.form-container h1 { color: var(--primary-red); text-transform: uppercase; font-weight: 900; margin-bottom: 30px; }
 
-.input-group {
-    margin-bottom: 25px;
-    text-align: left;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 1.1rem;
-    font-weight: 500;
-    padding-left: 5px;
-    color: #ddd;
-}
-
+.input-group { margin-bottom: 25px; text-align: left; }
+.input-group label { display: block; margin-bottom: 8px; color: #ddd; font-weight: bold; }
 .input-group input {
-    width: 100%;
-    padding: 15px;
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 2px solid #555;
-    border-radius: 10px;
-    color: white;
-    font-size: 1rem;
-    font-family: var(--font-stack);
-    outline: none;
-    transition: all 0.3s ease;
+    width: 100%; padding: 15px; background: rgba(255, 255, 255, 0.05);
+    border: 2px solid #555; border-radius: 50px; color: white; outline: none;
+    font-family: var(--font-stack); font-size: 1rem;
 }
+.input-group input:focus { border-color: var(--primary-red); box-shadow: 0 0 15px rgba(230, 0, 18, 0.3); background: rgba(255,255,255,0.1); }
 
-.input-group input:focus {
-    border-color: var(--primary-red);
-    background-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 15px rgba(230, 0, 18, 0.3);
-}
+/* ==========================================================================
+   7. PAGE ROULETTE (LE CŒUR DU JEU)
+   ========================================================================== */
+.roulette-layout { display: flex; flex-direction: column; align-items: center; overflow: hidden; }
 
-.form-btn {
-    width: 100%;
-    margin-top: 10px;
-}
-
-/* --- RESPONSIVE DESIGN (Mobile) --- */
-@media (max-width: 900px) {
-
-    /* CORRECTION 1 : On force les cartes à s'empiler */
-    .cards-showcase {
-        flex-direction: column;
-        gap: 50px;
-    }
-
-    /* CORRECTION 2 : Le menu reste à droite */
-    .option {
-        right: 20px; 
-        left: auto;  
-        top: 30px; /* Un peu plus haut sur mobile pour être aligné */
-        transform: none; /* Enlève le centrage vertical automatique */
-    }
-
-    .main-card {
-        transform: scale(1.1);
-        order: -1; /* Met la chaussure en premier */
-    }
-
-    .side-card {
-        transform: scale(1);
-        flex-basis: auto;
-        width: 90%;
-        max-width: 350px;
-    }
-
-    /* Suppression de la règle contradictoire .option { left: 20px } qui était ici */
-    
-    .form-container {
-        padding: 25px;
-        width: 90%;
-    }
-    
-    .form-container h1 {
-        font-size: 1.5rem;
-    }
-}
-
-#trigger-spin {
-    display: none;
-}
-
-.roulette-layout {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-/* 2. Titre Néon */
 .glow-text {
-    color: var(--primary-red);
-    font-size: 2.5rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    margin-bottom: 30px;
-    text-shadow: 0 0 10px rgba(230, 0, 18, 0.8);
-    animation: pulse 2s infinite;
+    color: var(--primary-red); font-size: 2.5rem; font-weight: 900; text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(230, 0, 18, 0.8); animation: pulse 2s infinite; margin-bottom: 20px;
 }
 
-@keyframes pulse {
-    0%, 100% { text-shadow: 0 0 10px rgba(230, 0, 18, 0.8); transform: scale(1); }
-    50% { text-shadow: 0 0 30px rgba(230, 0, 18, 1); transform: scale(1.02); }
-}
-
-/* 3. Conteneur de la roue */
 .wheel-section {
-    position: relative;
-    width: 350px;
-    height: 350px;
-    margin-bottom: 40px;
-    /* Cercle lumineux derrière */
+    position: relative; width: 350px; height: 350px; margin-bottom: 40px;
     background: radial-gradient(circle, rgba(255,0,0,0.2) 0%, rgba(0,0,0,0) 70%);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border-radius: 50%; display: flex; justify-content: center; align-items: center;
 }
 
-/* La flèche (Indicateur) */
 .marker {
-    position: absolute;
-    top: -15px;
-    z-index: 10;
-    width: 0; 
-    height: 0; 
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-top: 30px solid white;
-    filter: drop-shadow(0 4px 4px rgba(0,0,0,0.8));
+    position: absolute; top: -15px; left: 50%; transform: translateX(-50%); z-index: 10;
+    width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent;
+    border-top: 30px solid white; filter: drop-shadow(0 2px 2px black);
 }
 
 .wheel-wrapper {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    border: 5px solid rgba(255,255,255,0.1);
+    width: 100%; height: 100%; border-radius: 50%; overflow: hidden;
+    border: 5px solid rgba(255,255,255,0.1); box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
+/* --- LOGIQUE DE ROTATION (CSS PUR) --- */
+/* 1. On cache les inputs radio tout en haut */
+input[name="rng"] { display: none; }
+
+/* 2. La Roue */
 .the-wheel {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: rotate(0deg); /* Position de départ */
+    width: 100%; height: 100%; object-fit: cover;
+    transform: rotate(0deg);
+    /* C'est cette ligne qui fait l'animation fluide : */
+    transition: transform 4s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-/* 4. LE MÉCANISME D'ANIMATION (Quand la case est cochée) */
-#trigger-spin:checked ~ .game-container .wheel-wrapper .the-wheel {
-    /* Calcul de la rotation :
-       5 tours complets (1800deg) + 180deg pour amener la chaussure (qui est en bas) vers le haut.
-       Total = 1980deg.
-    */
-    animation: spinWheel 4s cubic-bezier(0.2, 0, 0.2, 1) forwards;
+/* 3. Les Angles de fin (Connectés aux IDs des Inputs) */
+#result-chaussure:checked ~ .game-container .wheel-section .the-wheel { transform: rotate(1980deg); }
+#result-10:checked ~ .game-container .wheel-section .the-wheel { transform: rotate(1860deg); }
+#result-20:checked ~ .game-container .wheel-section .the-wheel { transform: rotate(2100deg); }
+
+
+/* --- LE BOUTON "SHUFFLE" (MÉLANGEUR) --- */
+.shuffle-wrapper { 
+    position: relative; height: 60px; width: 300px; 
+    margin: 0 auto; display: flex; justify-content: center; align-items: center;
 }
 
-@keyframes spinWheel {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(1980deg); } /* S'arrête sur la chaussure */
-}
-
-/* 5. Gestion du bouton */
-.spin-btn {
-    cursor: pointer;
-    display: inline-block;
-    user-select: none;
-}
-
-/* Une fois cliqué, le bouton disparaît ou se désactive visuellement */
-#trigger-spin:checked ~ .game-container .spin-btn {
-    opacity: 0.5;
-    pointer-events: none; /* Empêche de recliquer */
-    transform: scale(0.95);
-    background-color: #333;
-    content: "Bonne chance...";
-}
-
-/* 6. Message de Victoire (Caché au début) */
-.win-message {
-    height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transform: translateY(20px);
-    text-align: center;
-    background: rgba(0,0,0,0.8);
-    border: 1px solid var(--primary-red);
-    padding: 0 20px;
-    border-radius: 15px;
-    transition: all 0.5s ease;
-}
-
-.win-message h2 {
-    color: var(--primary-red);
-    margin-bottom: 10px;
-}
-
-.claim-btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    background: white;
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-}
-
-
-#trigger-spin:checked ~ .game-container .win-message {
-    height: auto;
-    opacity: 1;
-    transform: translateY(0);
-    padding: 20px;
-    margin-top: 20px;
+/* A. Bouton Visible (Décoration) */
+.spin-btn-visual { 
+    /* IMPORTANT : Permet au clic de traverser l'image pour toucher les triggers */
+    pointer-events: none; 
     
-    transition-delay: 4s; 
+    position: absolute; width: 100%; height: 100%; z-index: 1; 
+    display: flex; justify-content: center; align-items: center;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-    .wheel-section {
-        width: 280px;
-        height: 280px;
-    }
-    .glow-text {
-        font-size: 1.8rem;
-    }
+/* B. Zones de Clic Invisibles (Triggers) */
+.trigger-btn {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    cursor: pointer; 
+    z-index: 100; /* Doit être au-dessus du visual (1) */
+    opacity: 0; /* Invisible */
+    
+    /* Animation qui alterne la visibilité très vite */
+    animation: shuffleIndex 0.3s infinite step-end;
+}
+.label-1 { animation-delay: 0s; }
+.label-2 { animation-delay: 0.1s; }
+.label-3 { animation-delay: 0.2s; }
+
+@keyframes shuffleIndex {
+    0% { z-index: 100; } /* Actif */
+    33% { z-index: 0; }  /* Inactif */
+    100% { z-index: 0; }
 }
 
+/* C. Boutons Résultat (Apparaissent à la fin) */
+.final-btn {
+    display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #28a745 !important; /* Vert */
+    text-decoration: none;
+    animation: appear 0.5s ease 4s forwards; /* Apparition après 4s */
+    opacity: 0; z-index: 200; /* Au-dessus de tout */
+    
+    /* Important : Réactiver les clics pour le bouton final */
+    pointer-events: auto;
+    
+    display: flex; align-items: center; justify-content: center;
+}
+.final-btn { display: none; }
+
+
+/* --- LOGIQUE D'AFFICHAGE APRÈS CLIC --- */
+/* 1. On cache les triggers et le bouton visual quand un radio est coché */
+input[name="rng"]:checked ~ .game-container .shuffle-wrapper .trigger-btn { display: none; }
+input[name="rng"]:checked ~ .game-container .shuffle-wrapper .spin-btn-visual { display: none; }
+
+/* 2. On affiche le BON bouton final selon le radio coché */
+#result-chaussure:checked ~ .game-container .shuffle-wrapper .btn-chaussure { display: flex; }
+#result-10:checked ~ .game-container .shuffle-wrapper .btn-10 { display: flex; }
+#result-20:checked ~ .game-container .shuffle-wrapper .btn-20 { display: flex; }
+
+
+/* ==========================================================================
+   8. PAGE RÉCOMPENSE (TARGET HACK)
+   ========================================================================== */
+.result-page {
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; min-height: 80vh; text-align: center;
+}
+
+.prize-section {
+    display: none; /* Caché par défaut */
+    flex-direction: column; align-items: center; width: 100%;
+    animation: fadeIn 1s ease;
+}
+
+/* Affiche la section ciblée par l'URL (#chaussure) */
+.prize-section:target { display: flex; }
+
+.prize-composition {
+    position: relative; width: 320px; height: 320px;
+    display: flex; justify-content: center; align-items: center; margin: 20px 0;
+}
+.bg-star {
+    position: absolute; width: 100%; height: 100%; object-fit: contain;
+    z-index: 1; animation: spinStar 12s linear infinite; opacity: 0.9;
+}
+.prize-item {
+    position: relative; z-index: 2; width: 100%; height: auto;
+    object-fit: contain; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.7));
+    animation: popPrize 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.congrats-title { color: var(--primary-red); font-size: 2.5rem; font-weight: 900; margin-bottom: 20px; }
+.win-text-bottom { color: white; font-size: 1.5rem; margin-top: 30px; text-transform: uppercase; font-weight: bold;}
+.pulse-btn { animation: pulseButton 2s infinite; }
+
+/* ==========================================================================
+   9. ANIMATIONS & RESPONSIVE
+   ========================================================================== */
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+@keyframes appear { to { opacity: 1; } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes spinStar { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes popPrize { 0% { transform: scale(0); } 100% { transform: scale(1); } }
+@keyframes pulseButton { 0% { box-shadow: 0 0 0 0 rgba(230, 0, 18, 0.7); } 70% { box-shadow: 0 0 0 20px rgba(230, 0, 18, 0); } 100% { box-shadow: 0 0 0 0 rgba(230, 0, 18, 0); } }
+
+@media (max-width: 900px) {
+    .cards-showcase { flex-direction: column; gap: 50px; }
+    .main-card { order: -1; transform: scale(1.1); }
+    .sidebar { width: 100%; right: -100%; }
+    .wheel-section, .prize-composition { width: 280px; height: 280px; }
+}
