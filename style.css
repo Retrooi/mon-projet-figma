@@ -1,337 +1,156 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    min-height: 100vh;
-    font-family: 'Montserrat', sans-serif;
-    color: #ffffff;
     background-color: #2b2b2b;
+    color: white;
+    font-family: sans-serif;
     overflow-x: hidden;
-    background-image: 
-        radial-gradient(circle at center, rgba(0,0,0,0) 20%, rgba(0,0,0,0.7) 100%),
-        repeating-linear-gradient(
-            90deg,
-            #2b2b2b,
-            #2b2b2b 60px,
-            #383838 60px,
-            #383838 120px
-        );
 }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
+body {
+    background-color: #2b2b2b;
+    color: white;
+    font-family: sans-serif;
+    overflow-x: hidden;
+}
 header {
-    height: 100px;
-    padding: 20px;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    z-index: 10;
+    background: #1a1a1a;
 }
 
-.main-logo {
-    max-width: 180px;
-    height: auto;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
-}
+#menu-toggle { display: none; }
 
-#menu-toggle { 
-    display: none; 
-}
-
+/* Le bouton "Hamburger" */
 .option {
     position: absolute;
-    right: 25px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    right: 20px;
     cursor: pointer;
-    z-index: 200;
+    z-index: 100;
 }
-
 .option span {
     display: block;
-    height: 4px;
-    width: 100%;
-    background-color: #888;
-    border-radius: 4px;
+    width: 25px;
+    height: 3px;
+    background: white;
+    margin: 5px;
 }
 
+/* La barre latérale */
 .sidebar {
     position: fixed;
-    top: 0;
-    right: -350px;
-    width: 350px;
+    top: 0; 
+    right: -300px; /* Caché par défaut */
+    width: 300px;
     height: 100%;
-    padding-top: 80px;
-    background-color: rgba(15, 15, 15, 0.98);
-    box-shadow: -5px 0 15px rgba(0,0,0,0.5);
-    display: flex;
-    flex-direction: column;
-    transition: right 0.5s ease;
-    z-index: 1000;
+    background: #000;
+    transition: 0.4s;
 }
 
-#menu-toggle:checked ~ .sidebar {
-    right: 0;
-}
+/* Action d'ouverture */
+#menu-toggle:checked ~ .sidebar { right: 0; }
 
 .sidebar a {
     display: block;
-    padding: 20px 30px;
+    padding: 20px;
+    color: white;
     text-decoration: none;
-    color: #818181;
-    font-size: 1.2rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
-
-.close-btn {
-    position: absolute;
-    top: 20px;
-    left: 25px;
-    font-size: 40px;
-    color: #ffffff;
-    cursor: pointer;
-}
-
-.cta-container {
-    margin: 30px 0;
-    display: flex;
-    justify-content: center;
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
 }
 
 .play-button {
     display: inline-block;
-    padding: 18px 50px;
-    background-color: #000000;
-    color: #ffffff;
-    border: none;
+    padding: 15px 40px;
+    background: #E60012; /* Rouge Nintendo */
+    color: white;
     border-radius: 50px;
-    font-size: 1.2rem;
-    font-weight: 900;
-    text-transform: uppercase;
     text-decoration: none;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-}
-
-.btn-green {
-    background-color: #28a745;
-}
-
-.game-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
+    font-weight: bold;
 }
 
 .cards-showcase {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 30px;
-    margin: 40px 0 50px 0;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 40px;
 }
 
 .card {
-    flex-basis: 320px;
-    min-height: 300px;
-    padding: 25px;
-    background-color: #E60012;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 10px 30px rgba(230, 0, 18, 0.5);
+    background: #E60012;
+    padding: 20px;
+    border-radius: 15px;
+    width: 250px;
 }
-
-.card h2 {
-    color: #ffffff;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    font-weight: 900;
-    margin-bottom: 15px;
-}
-
-.card img {
-    max-width: 80%;
-    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
-}
-
-.main-image img { 
-    max-width: 100%; 
-}
-
-.form-page {
-    width: 100%;
-    padding-top: 40px;
-    display: flex;
-    justify-content: center;
-}
-
-.form-container {
-    width: 100%;
-    max-width: 500px;
-    padding: 40px;
-    margin: 0 20px;
-    background: rgba(43, 43, 43, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
     text-align: center;
+    padding: 20px;
 }
 
-.form-container h1 {
-    margin-bottom: 30px;
-    color: #E60012;
-    text-transform: uppercase;
-    font-weight: 900;
-}
-
-.input-group {
-    margin-bottom: 25px;
-    text-align: left;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 8px;
-    color: #ddd;
+.play-button {
+    display: inline-block;
+    padding: 15px 40px;
+    background: #E60012; /* Rouge Nintendo */
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
     font-weight: bold;
 }
 
-.input-group input {
-    width: 100%;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid #555;
-    border-radius: 50px;
-    color: #ffffff;
-    font-size: 1rem;
-}
-
-.roulette-layout {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.glow-text {
-    margin-bottom: 20px;
-    color: #E60012;
-    font-size: 2.5rem;
-    font-weight: 900;
-    text-transform: uppercase;
-}
-
-.wheel-section {
-    position: relative;
-    width: 350px;
-    height: 350px;
-    margin-bottom: 40px;
-    background: radial-gradient(circle, rgba(255,0,0,0.2) 0%, rgba(0,0,0,0) 70%);
-    border-radius: 50%;
+.cards-showcase {
     display: flex;
     justify-content: center;
-    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 40px;
 }
 
-.marker {
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-top: 30px solid #ffffff;
+.card {
+    background: #E60012;
+    padding: 20px;
+    border-radius: 15px;
+    width: 250px;
+}
+.form-container {
+    max-width: 400px;
+    margin: 40px auto;
+    background: rgba(0,0,0,0.5);
+    padding: 30px;
+    border-radius: 15px;
 }
 
-.wheel-wrapper {
+input {
     width: 100%;
-    height: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 20px;
+    border: none;
+}
+
+/* La Roue (Simplifiée) */
+.wheel-section {
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
+    border: 5px solid white;
+    margin: 20px auto;
     overflow: hidden;
-    border: 5px solid rgba(255,255,255,0.1);
 }
 
 .the-wheel {
     width: 100%;
     height: 100%;
-    object-fit: cover;
 }
-
-.result-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 80vh;
-    text-align: center;
-}
-
-.prize-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-.prize-composition {
-    position: relative;
-    width: 320px;
-    height: 320px;
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.bg-star {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    z-index: 1;
-}
-
-.prize-item {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-}
-
-.congrats-title {
-    margin-bottom: 20px;
-    color: #E60012;
-    font-size: 2.5rem;
-    font-weight: 900;
-}
-
-.win-text-bottom {
-    margin-top: 30px;
-    color: #ffffff;
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
-@media (max-width: 900px) {
-    .cards-showcase { 
-        flex-direction: column; 
-        gap: 50px; 
-    }
+@media (max-width: 768px) {
+    .cards-showcase { flex-direction: column; align-items: center; }
 }
