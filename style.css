@@ -86,4 +86,163 @@ header {
 .play-button {
     display: inline-block;
     padding: 15px 40px;
-    background: #E60012;
+    background: #E60012; 
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.play-button:hover {
+    transform: scale(1.05);
+}
+
+.btn-green {
+    background-color: #28a745 !important;
+}
+
+/* 5. Formulaires et Roue (Base) */
+.form-container {
+    max-width: 400px;
+    margin: 40px auto;
+    background: rgba(0,0,0,0.5);
+    padding: 30px;
+    border-radius: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 20px;
+    border: none;
+}
+
+/* 6. Responsive */
+@media (max-width: 768px) {
+    .cards-showcase { 
+        flex-direction: column; 
+        align-items: center; 
+    }
+}
+
+/* --- 7. STYLES SPÉCIFIQUES POUR LA PAGE ROULETTE --- */
+.main-logo {
+    height: 50px;
+    object-fit: contain;
+}
+
+.game-container {
+    max-width: 800px;
+    margin: 40px auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.glow-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.marker {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; 
+    height: 0; 
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 25px solid #E60012;
+    z-index: 10;
+}
+
+.wheel-section {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 5px solid white;
+    margin: 20px auto;
+    position: relative;
+    overflow: visible; 
+}
+
+.the-wheel {
+    width: 100%;
+    height: 100%;
+    transition: transform 4s cubic-bezier(0.25, 0.1, 0.25, 1); 
+}
+
+.spin-animation {
+    transform: rotate(3600deg);
+}
+
+.cta-container {
+    margin-top: 40px;
+}
+
+/* --- 8. STYLES SPÉCIFIQUES POUR LA PAGE RÉCOMPENSE --- */
+.result-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    text-align: center;
+}
+
+.prize-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.congrats-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 3rem;
+    color: white;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    margin-bottom: 20px;
+}
+
+.prize-composition {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.bg-star {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 1;
+    animation: spin-star 15s linear infinite;
+}
+
+.prize-item {
+    position: relative;
+    z-index: 2;
+    width: 85%;
+    transform: rotate(-10deg);
+    filter: drop-shadow(0px 15px 10px rgba(0,0,0,0.7));
+}
+
+@keyframes spin-star {
+    100% { transform: rotate(360deg); }
+}
+
+.win-text-bottom {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
