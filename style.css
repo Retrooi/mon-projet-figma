@@ -19,7 +19,7 @@ header {
     justify-content: center;
     align-items: center;
     background: #1a1a1a;
-    position: relative; /* Important pour le positionnement de l'option */
+    position: relative;
 }
 
 #menu-toggle { display: none; }
@@ -76,7 +76,7 @@ header {
 }
 
 .card {
-    background: #E60012; /* Rouge Nintendo */
+    background: #E60012; 
     padding: 20px;
     border-radius: 15px;
     width: 250px;
@@ -86,54 +86,4 @@ header {
 .play-button {
     display: inline-block;
     padding: 15px 40px;
-    background: #E60012; 
-    color: white;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: transform 0.2s;
-}
-
-.play-button:hover {
-    transform: scale(1.05);
-}
-
-/* 5. Formulaires et Roue */
-.form-container {
-    max-width: 400px;
-    margin: 40px auto;
-    background: rgba(0,0,0,0.5);
-    padding: 30px;
-    border-radius: 15px;
-}
-
-input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 20px;
-    border: none;
-}
-
-.wheel-section {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    border: 5px solid white;
-    margin: 20px auto;
-    overflow: hidden;
-    position: relative;
-}
-
-.the-wheel {
-    width: 100%;
-    height: 100%;
-}
-
-/* 6. Responsive */
-@media (max-width: 768px) {
-    .cards-showcase { 
-        flex-direction: column; 
-        align-items: center; 
-    }
-}
+    background: #E60012;
